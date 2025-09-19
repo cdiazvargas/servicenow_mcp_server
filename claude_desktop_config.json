@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "servicenow-knowledge": {
-      "command": "Path to start_mcp_server.sh file/start_mcp_server.sh",
-      "args": []
-    }
-  }
-}
