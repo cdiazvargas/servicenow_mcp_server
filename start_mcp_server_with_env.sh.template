@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# ServiceNow MCP Server Startup Script with Environment
+# This ensures all environment variables are properly set before starting the server
+
+# Change to the correct directory - UPDATE THIS PATH
+cd "/YOUR/ABSOLUTE/PATH/TO/ServiceNow MCP Server"
+
+# Set all required environment variables
+export PYTHONPATH="/YOUR/ABSOLUTE/PATH/TO/ServiceNow MCP Server"
+export SERVICENOW_INSTANCE_URL="https://your-instance.service-now.com/"
+export SERVICENOW_CLIENT_ID="your-client-id-here"
+export SERVICENOW_CLIENT_SECRET="your-client-secret-here"
+export JWT_SECRET_KEY="your-jwt-secret-key-here"
+export JWT_ALGORITHM="HS256"
+export JWT_EXPIRATION_HOURS="24"
+export LOG_LEVEL="info"
+export LOG_FORMAT="json"
+export AUTH_TIMEOUT_SECONDS="300"
+export SESSION_REFRESH_THRESHOLD_SECONDS="600"
+export MAX_CONCURRENT_SESSIONS="100"
+export SERVICENOW_API_TIMEOUT="30"
+export SERVICENOW_MAX_RETRIES="3"
+export SERVICENOW_RETRY_DELAY="1.0"
+
+# Start the server with the virtual environment Python - UPDATE THIS PATH
+exec "/YOUR/ABSOLUTE/PATH/TO/ServiceNow MCP Server/venv/bin/python" -m servicenow_mcp_server.main

@@ -71,5 +71,6 @@ test-results/
 #sh path
 .sh
 
-#claude
+# Personal configuration files (contain system-specific paths and credentials)
 claude_desktop_config.json
+start_mcp_server_with_env.sh

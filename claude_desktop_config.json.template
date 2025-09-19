@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "servicenow-knowledge": {
+      "command": "/YOUR/ABSOLUTE/PATH/TO/ServiceNow MCP Server/start_mcp_server_with_env.sh",
+      "args": []
+    }
+  }
+}
