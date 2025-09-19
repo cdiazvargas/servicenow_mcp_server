@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "servicenow-knowledge": {
+      "command": "/Users/cdiazvargas/Documents/Cursor Projects/ServiceNow MCP Server/start_mcp_server.sh",
+      "args": []
+    }
+  }
+}
