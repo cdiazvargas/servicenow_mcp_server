@@ -30,6 +30,7 @@ from .types import (
     GetUserContextResponse,
     SearchKnowledgeRequest,
     SearchKnowledgeResponse,
+    SearchType,
     ServiceNowConfig,
 )
 
@@ -87,13 +88,13 @@ class ServiceNowMCPServer:
                 ),
                 Tool(
                     name="search_knowledge",
-                    description="Search ServiceNow knowledge articles with role-based access control",
+                    description="Search ServiceNow knowledge articles with role-based access control. Supports multiple search types: content (default), sys_id, number, title_exact, title_partial",
                     inputSchema={
                         "type": "object",
                         "properties": {
                             "query": {
                                 "type": "string",
-                                "description": "The search query for knowledge articles"
+                                "description": "The search query for knowledge articles. For sys_id/number searches, provide the exact identifier. For title searches, provide the title text."
                             },
                             "user_id": {
                                 "type": "string",
@@ -110,6 +111,12 @@ class ServiceNowMCPServer:
                                 "type": "boolean",
                                 "description": "Whether to synthesize a response from multiple articles (default: true)",
                                 "default": True
+                            },
+                            "search_type": {
+                                "type": "string",
+                                "enum": ["content", "sys_id", "number", "title_exact", "title_partial"],
+                                "description": "Type of search to perform: 'content' (search in title and content), 'sys_id' (exact sys_id match), 'number' (exact article number), 'title_exact' (exact title match), 'title_partial' (partial title match)",
+                                "default": "content"
                             }
                         },
                         "required": ["query", "user_id"]
@@ -282,14 +289,16 @@ class ServiceNowMCPServer:
                 "Searching knowledge articles",
                 query=request.query,
                 user_id=request.user_id,
-                synthesize=request.synthesize
+                synthesize=request.synthesize,
+                search_type=request.search_type
             )
             
             # Search articles
             search_result = await self.servicenow_client.search_knowledge_articles(
                 query=request.query,
                 user_id=request.user_id,
-                limit=request.limit
+                limit=request.limit,
+                search_type=request.search_type
             )
             
             if request.synthesize:

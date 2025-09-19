@@ -22,25 +22,25 @@ Create test knowledge articles in ServiceNow with proper role-based access:
 2. **Employee Article** (accessible to employees)
    - Title: "Employee Vacation Policy"
    - Category: "HR Policies"
-   - Roles: "employee,knowledge_reader"
+   - Roles: "employee,knowledge"
    - Workflow State: Published
 
 3. **Manager Article** (accessible to managers)
    - Title: "Disciplinary Procedures"
    - Category: "Management"
-   - Roles: "manager,knowledge_reader"
+   - Roles: "manager,knowledge"
    - Workflow State: Published
 
 4. **IT Article** (accessible to IT administrators)
    - Title: "Server Maintenance Procedures"
    - Category: "IT Documentation"
-   - Roles: "it_administrator,knowledge_reader"
+   - Roles: "it_administrator,knowledge"
    - Workflow State: Published
 
 5. **Contractor Article** (accessible to contractors)
    - Title: "Contractor Guidelines"
    - Category: "External"
-   - Roles: "contractor,knowledge_reader"
+   - Roles: "contractor,knowledge"
    - Workflow State: Published
 
 ### Test Users
@@ -49,19 +49,19 @@ Create test users with different role assignments:
 
 1. **Regular Employee**
    - Username: `test.employee`
-   - Roles: `employee`, `knowledge_reader`
+   - Roles: `employee`, `knowledge`
 
 2. **Manager**
    - Username: `test.manager`
-   - Roles: `employee`, `manager`, `knowledge_reader`
+   - Roles: `employee`, `manager`, `knowledge`
 
 3. **IT Administrator**
    - Username: `test.itadmin`
-   - Roles: `employee`, `it_administrator`, `knowledge_reader`
+   - Roles: `employee`, `it_administrator`, `knowledge`
 
 4. **Contractor**
    - Username: `test.contractor`
-   - Roles: `contractor`, `knowledge_reader`
+   - Roles: `contractor`, `knowledge`
 
 ## Testing Framework
 
@@ -91,7 +91,7 @@ echo '{
 #   "success": true,
 #   "user_id": "user-sys-id",
 #   "username": "test.employee", 
-#   "roles": ["employee", "knowledge_reader"],
+#   "roles": ["employee", "knowledge"],
 #   "expires_at": "2024-12-17T15:30:00.000Z",
 #   "auth_method": "jwt"
 # }
@@ -118,7 +118,7 @@ echo '{
 #   "success": true,
 #   "user_id": "user-sys-id",
 #   "username": "test.employee",
-#   "roles": ["employee", "knowledge_reader"],
+#   "roles": ["employee", "knowledge"],
 #   "expires_at": "2024-12-17T15:30:00.000Z",
 #   "auth_method": "oauth"
 # }
@@ -380,7 +380,7 @@ class TestAuthentication:
         mock_user_context = UserContext(
             user_id="test-user-123",
             username="test.employee",
-            roles=["employee", "knowledge_reader"],
+            roles=["employee", "knowledge"],
             session_token="test-jwt-token",
             expires_at=datetime.utcnow() + timedelta(hours=1),
             auth_method=AuthMethod.JWT
@@ -404,7 +404,7 @@ class TestAuthentication:
         mock_user_context = UserContext(
             user_id="test-user-456",
             username="test.manager",
-            roles=["manager", "employee", "knowledge_reader"],
+            roles=["manager", "employee", "knowledge"],
             session_token="test-oauth-token",
             expires_at=datetime.utcnow() + timedelta(minutes=30),
             auth_method=AuthMethod.OAUTH
@@ -446,7 +446,7 @@ class TestRoleBasedAccess:
         employee_context = UserContext(
             user_id="employee-123",
             username="test.employee", 
-            roles=["employee", "knowledge_reader"],
+            roles=["employee", "knowledge"],
             session_token="employee-token",
             expires_at=datetime.utcnow() + timedelta(hours=1),
             auth_method=AuthMethod.JWT
@@ -474,7 +474,7 @@ class TestRoleBasedAccess:
         manager_context = UserContext(
             user_id="manager-456",
             username="test.manager",
-            roles=["manager", "employee", "knowledge_reader"],
+            roles=["manager", "employee", "knowledge"],
             session_token="manager-token", 
             expires_at=datetime.utcnow() + timedelta(hours=1),
             auth_method=AuthMethod.JWT

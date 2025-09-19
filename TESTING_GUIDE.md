@@ -124,7 +124,7 @@ async def test_mcp_server():
         payload = {
             "sub": "test-user-123",
             "username": "test.user",
-            "roles": ["employee", "knowledge_reader"],
+            "roles": ["employee", "knowledge"],
             "iat": int(datetime.utcnow().timestamp()),
             "exp": int((datetime.utcnow() + timedelta(hours=1)).timestamp()),
             "iss": "test-issuer"

@@ -233,7 +233,7 @@ class AuthenticationManager:
                     status_code=response.status_code,
                     user_id=user_id
                 )
-                return ["knowledge_reader"]  # Default role
+                return ["knowledge"]  # Default ServiceNow knowledge role
             
             roles_data = response.json()["result"]
             return [
@@ -367,7 +367,7 @@ class AuthenticationManager:
                 username = "oauth_service"
                 
                 # For client credentials, assign basic service roles
-                roles = ["mcp_user", "knowledge_reader"]
+                roles = ["mcp_user", "knowledge"]
                 
                 # Create user context
                 user_context = UserContext(

@@ -22,6 +22,15 @@ class AuthMethod(str, Enum):
     BASIC = "basic"
 
 
+class SearchType(str, Enum):
+    """Article search types."""
+    CONTENT = "content"  # Search in title and content (default)
+    SYS_ID = "sys_id"   # Search by exact sys_id
+    NUMBER = "number"   # Search by article number
+    TITLE_EXACT = "title_exact"  # Exact title match
+    TITLE_PARTIAL = "title_partial"  # Partial title match
+
+
 class ServiceNowConfig(BaseModel):
     """ServiceNow instance configuration."""
     instance_url: HttpUrl
@@ -189,6 +198,7 @@ class SearchKnowledgeRequest(BaseModel):
     limit: int = Field(default=10, ge=1, le=50)
     synthesize: bool = True
     include_related: bool = True
+    search_type: SearchType = SearchType.CONTENT
 
 
 class SearchKnowledgeResponse(BaseModel):

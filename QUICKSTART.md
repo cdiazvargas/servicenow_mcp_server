@@ -97,9 +97,9 @@ Expected success response:
   "success": true,
   "user_id": "user-sys-id",
   "username": "user.name",
-  "roles": ["employee", "knowledge_reader"],
+  "roles": ["employee", "knowledge"],
   "expires_at": "2024-12-17T15:30:00Z",
-  "message": "Successfully authenticated via JWT. User has 2 role(s): employee, knowledge_reader"
+  "message": "Successfully authenticated via JWT. User has 2 role(s): employee, knowledge"
 }
 ```
 
@@ -135,7 +135,7 @@ def generate_test_jwt():
     payload = {
         "sub": "test-user-123",
         "username": "test.user",
-        "roles": ["employee", "knowledge_reader"],
+        "roles": ["employee", "knowledge"],
         "iat": int(datetime.utcnow().timestamp()),
         "exp": int((datetime.utcnow() + timedelta(hours=24)).timestamp()),
         "iss": "test-issuer"
@@ -208,7 +208,7 @@ search_knowledge(query="What is our vacation policy?", user_id="emp123")
 # Manager JWT with additional roles:
 jwt_token = generate_jwt_for_user(
     user_id="mgr456", 
-    roles=["employee", "manager", "knowledge_reader"]
+    roles=["employee", "manager", "knowledge"]
 )
 
 # Manager can access management procedures:

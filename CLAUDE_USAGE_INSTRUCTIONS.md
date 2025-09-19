@@ -17,7 +17,7 @@ If your company has JWT integration:
 {
   "sub": "user-sys-id",
   "username": "user.name", 
-  "roles": ["employee", "knowledge_reader"],
+  "roles": ["employee", "knowledge"],
   "iat": 1640995200,
   "exp": 1641081600,
   "iss": "your-company"

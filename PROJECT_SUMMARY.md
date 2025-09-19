@@ -291,7 +291,7 @@ mypy servicenow_mcp_server/
 ### ServiceNow Prerequisites
 - ServiceNow instance with JWT integration or OAuth 2.0 configured
 - Knowledge Management module activated
-- User roles properly configured (`knowledge_reader`, etc.)
+- User roles properly configured (`knowledge`, `knowledge_admin`, etc.)
 - Knowledge articles published and categorized
 
 ## 🎯 Usage Examples

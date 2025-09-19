@@ -55,7 +55,7 @@ def mock_user_context() -> UserContext:
     return UserContext(
         user_id="test-user-123",
         username="test.user",
-        roles=["employee", "knowledge_reader"],
+        roles=["employee", "knowledge"],
         session_token="mock-jwt-token",
         expires_at=datetime.utcnow() + timedelta(hours=1),
         auth_method=AuthMethod.JWT
@@ -181,7 +181,7 @@ def valid_jwt_payload() -> Dict[str, any]:
     return {
         "sub": "test-user-123",
         "username": "test.user",
-        "roles": ["employee", "knowledge_reader"],
+        "roles": ["employee", "knowledge"],
         "iat": int(datetime.utcnow().timestamp()),
         "exp": int((datetime.utcnow() + timedelta(hours=1)).timestamp()),
         "iss": "test-issuer"

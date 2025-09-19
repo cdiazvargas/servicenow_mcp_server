@@ -37,7 +37,7 @@ Before deploying, ensure your ServiceNow instance is properly configured:
 
 #### User Roles and Permissions
 Ensure users have appropriate roles:
-- `knowledge_reader` - Basic knowledge article access
+- `knowledge` - Basic knowledge article access (standard ServiceNow role)
 - `knowledge_manager` - Full knowledge management (if needed)
 - Custom roles based on your organizational structure
 

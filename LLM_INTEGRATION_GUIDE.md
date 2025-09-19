@@ -131,14 +131,14 @@ def generate_servicenow_jwt(user_id: str, username: str, roles: list[str]) -> st
 employee_token = generate_servicenow_jwt(
     user_id="emp123456",
     username="john.doe",
-    roles=["employee", "knowledge_reader"]
+    roles=["employee", "knowledge"]
 )
 
 # Example: Generate token for manager  
 manager_token = generate_servicenow_jwt(
     user_id="mgr789012", 
     username="jane.manager",
-    roles=["employee", "manager", "knowledge_reader", "knowledge_admin"]
+    roles=["employee", "manager", "knowledge", "knowledge_admin"]
 )
 ```
 

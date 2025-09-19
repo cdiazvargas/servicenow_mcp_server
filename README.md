@@ -102,7 +102,7 @@ Your JWT tokens should include the following claims:
 {
   "sub": "user-sys-id",           // ServiceNow user ID
   "username": "user.name",        // ServiceNow username  
-  "roles": ["employee", "knowledge_reader"],  // User roles
+  "roles": ["employee", "knowledge"],  // User roles (using standard ServiceNow roles)
   "iat": 1640995200,             // Issued at
   "exp": 1641081600,             // Expiration
   "iss": "your-company"          // Issuer (optional)

@@ -67,3 +67,9 @@ test-results/
 
 # TypeScript cache
 *.tsbuildinfo
+
+#sh path
+.sh
+
+#claude
+claude_desktop_config.json
